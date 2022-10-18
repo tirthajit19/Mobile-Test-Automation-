@@ -2,14 +2,27 @@
   "desiredCapabilities": [
     {
       "app": "sample_app.apk",
-      "appWaitActivity": "com.swaglabsmobileapp.MainActivity",
       "platformName": "android",
-      "automationName": "UiAutomator2"
+      "automationName": "UiAutomator2",
+      "newCommandTimeout": 300,
+      "autoGrantPermissions": true,
+      "appWaitActivity": "com.swaglabsmobileapp.MainActivity",
+      "noReset": true,
+      "avdLaunchTimeout": 300,
+      "autoAcceptAlerts": true,
+      "useKeystore": false,
+      "browserstack.appium_version": "1.20.2"
     },
     {
-      "app": "<app_name_with_extension>",
+      "app": "sample_app.ipa",
       "platformName": "iOS",
-      "automationName": "XCUITest"
+      "automationName": "XCUITest",
+      "newCommandTimeout": 300,
+      "autoGrantPermissions": true,
+      "noReset": true,
+      "avdLaunchTimeout": 300,
+      "autoAcceptAlerts": true,
+      "useKeystore": false
     }
   ]
 }
