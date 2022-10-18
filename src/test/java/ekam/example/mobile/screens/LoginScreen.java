@@ -9,18 +9,31 @@ public class LoginScreen extends MobileScreen {
     private final By usernameTextBox = queryByContentDesc("test-Username");
     private final By passwordTextBox = queryByContentDesc("test-Password");
     private final By loginButton = queryByContentDesc("test-LOGIN");
-    private final By cart = queryByContentDesc("test-Cart");
+    private final By errorMessageContainer = query("//*[@content-desc = 'test-Error message']/*");
 
-    @MobileStep(keyword = "When", description = "I login")
-    public LoginScreen login() {
-        textbox(usernameTextBox).setText("standard_user");
-        textbox(passwordTextBox).setText("secret_sauce");
+    @MobileStep(description = "Login")
+    public LoginScreen login(String username, String password) {
+        setUsername(username);
+        setPassword(password);
+        clickLogin();
+        return this;
+    }
+
+    @MobileStep(description = "Click Login")
+    public LoginScreen clickLogin() {
         element(loginButton).click();
         return this;
     }
 
-    @MobileStep(keyword = "Then", description = "Return if cart is displayed")
-    public boolean isCartDisplayed() {
-        return element(cart).isDisplayed();
+    @MobileStep(keyword = "And", description = "Enter Username")
+    public LoginScreen setUsername(String username) {
+        textbox(usernameTextBox).setText(username);
+        return this;
+    }
+
+    @MobileStep(keyword = "And", description = "Enter password")
+    public LoginScreen setPassword(String password) {
+        textbox(passwordTextBox).setText(password);
+        return this;
     }
 }
